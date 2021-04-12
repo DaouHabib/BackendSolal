@@ -1,0 +1,732 @@
+swagger: "2.0"
+info:
+  description: "This is a sample server Petstore server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters."
+  version: "1.0.0"
+  title: "Swagger Petstore"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "apiteam@swagger.io"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "localhost:3000"
+basePath: "/"
+tags:
+- name: "user"
+  description: "Operations about user"
+  externalDocs:
+    description: "Find out more about our store"
+    url: "localhost:3000/"
+schemes:
+- "https"
+- "http"
+paths:
+  /boutique:
+    get:
+      tags:
+      - "boutiques"
+      summary: "Get boutique"
+      description: "This can only be done by the logged in user."
+      operationId: "Get"
+      produces:
+      - "application/json"
+      security:
+        - Bearer: []
+      responses:
+        default:
+          description: "successful operation"
+    post:
+      description: add an specific boutique
+      tags:
+        - boutiques
+      produces:
+        - application/json
+      security:
+        - Bearer: []
+      parameters:
+        - name: boutique
+          description: boutique object
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/boutique'
+      responses:
+        200:
+          description: boutique
+          schema:
+            $ref: '#/definitions/boutique'
+  /boutique/{boutiqueId}:
+    get:
+      description: Retrieve an specific boutique
+      tags:
+        - boutiques
+      produces:
+        - application/json
+      security:
+        - Bearer: []
+      parameters:
+        - name: boutiqueId
+          description: id of the boutique to retrieve
+          in: path
+          required: true
+          type: string
+      responses:
+        200:
+          description: boutique
+          schema:
+            $ref: '#/definitions/boutique'
+    put:
+      description: Edit an specific boutique
+      tags:
+        - boutiques
+      produces:
+        - application/json
+      security:
+        - Bearer: []
+      parameters:
+        - name: boutiqueId
+          description: id of the boutique to Edit
+          in: path
+          required: true
+          type: string
+        - name: boutique
+          description: boutique object
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/boutique'
+      responses:
+        200:
+          description: boutique
+          schema:
+            $ref: '#/definitions/boutique'
+    delete:
+      description: Use to request delete all boutiques
+      tags:
+       - boutiques
+      parameters:
+        - name: boutiqueId
+          description: id of the boutique to Edit
+          in: path
+          required: true
+          type: string
+      security:
+        - Bearer: []
+      responses:
+        200:
+         description: A successful response 
+  /offre:
+    get:
+      tags:
+      - "offres"
+      summary: "Get offre"
+      description: "This can only be done by the logged in user."
+      operationId: "Get"
+      produces:
+      - "application/json"
+      security:
+        - Bearer: []
+      responses:
+        default:
+          description: "successful operation"
+    post:
+      description: add an specific offre
+      tags:
+        - offres
+      produces:
+        - application/json
+      security:
+        - Bearer: []
+      parameters:
+        - name: offre
+          description: offre object
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/offre'
+      responses:
+        200:
+          description: offre
+          schema:
+            $ref: '#/definitions/offre'
+  /offre/{offreId}:
+    get:
+      description: Retrieve an specific offre
+      tags:
+        - offres
+      produces:
+        - application/json
+      security:
+        - Bearer: []
+      parameters:
+        - name: offreId
+          description: id of the offre to retrieve
+          in: path
+          required: true
+          type: string
+      responses:
+        200:
+          description: offre
+          schema:
+            $ref: '#/definitions/offre'
+    put:
+      description: Edit an specific offre
+      tags:
+        - offres
+      produces:
+        - application/json
+      security:
+        - Bearer: []
+      parameters:
+        - name: offreId
+          description: id of the offre to Edit
+          in: path
+          required: true
+          type: string
+        - name: offre
+          description: offre object
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/offre'
+      responses:
+        200:
+          description: offre
+          schema:
+            $ref: '#/definitions/offre'
+    delete:
+      description: Use to request delete all offres
+      tags:
+       - offres
+      parameters:
+        - name: offreId
+          description: id of the offre to Edit
+          in: path
+          required: true
+          type: string
+      security:
+        - Bearer: []
+      responses:
+        200:
+         description: A successful response 
+  /entreprise:
+    get:
+      tags:
+      - "entreprises"
+      summary: "Get entreprise"
+      description: "This can only be done by the logged in user."
+      operationId: "Get"
+      produces:
+      - "application/json"
+      security:
+        - Bearer: []
+      responses:
+        default:
+          description: "successful operation"
+    post:
+      description: add an specific entreprise
+      tags:
+        - entreprises
+      produces:
+        - application/json
+      security:
+        - Bearer: []
+      parameters:
+        - name: entreprise
+          description: entreprise object
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/entreprise'
+      responses:
+        200:
+          description: entreprise
+          schema:
+            $ref: '#/definitions/entreprise'
+  /entreprise/{entrepriseId}:
+    get:
+      description: Retrieve an specific entreprise
+      tags:
+        - entreprises
+      produces:
+        - application/json
+      security:
+        - Bearer: []
+      parameters:
+        - name: entrepriseId
+          description: id of the entreprise to retrieve
+          in: path
+          required: true
+          type: string
+      responses:
+        200:
+          description: entreprise
+          schema:
+            $ref: '#/definitions/entreprise'
+    put:
+      description: Edit an specific entreprise
+      tags:
+        - entreprises
+      produces:
+        - application/json
+      security:
+        - Bearer: []
+      parameters:
+        - name: entrepriseId
+          description: id of the entreprise to Edit
+          in: path
+          required: true
+          type: string
+        - name: entreprise
+          description: entreprise object
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/entreprise'
+      responses:
+        200:
+          description: entreprise
+          schema:
+            $ref: '#/definitions/entreprise'
+    delete:
+      description: Use to request delete all entreprises
+      tags:
+       - entreprises
+      parameters:
+        - name: entrepriseId
+          description: id of the entreprise to Edit
+          in: path
+          required: true
+          type: string
+      security:
+        - Bearer: []
+      responses:
+        200:
+         description: A successful response 
+  /projet:
+    get:
+      tags:
+      - "projets"
+      summary: "Get projet"
+      description: "This can only be done by the logged in user."
+      operationId: "Get"
+      produces:
+      - "application/json"
+      security:
+        - Bearer: []
+      responses:
+        default:
+          description: "successful operation"
+    post:
+      description: add an specific projet
+      tags:
+        - projets
+      produces:
+        - application/json
+      security:
+        - Bearer: []
+      parameters:
+        - name: projet
+          description: projet object
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/newProject'
+      responses:
+        200:
+          description: projet
+          schema:
+            $ref: '#/definitions/newProject'
+  /projet/{projetId}:
+    get:
+      description: Retrieve an specific projet
+      tags:
+        - projets
+      produces:
+        - application/json
+      security:
+        - Bearer: []
+      parameters:
+        - name: projetId
+          description: id of the projet to retrieve
+          in: path
+          required: true
+          type: string
+      responses:
+        200:
+          description: projet
+          schema:
+            $ref: '#/definitions/newProject'
+    put:
+      description: Edit an specific projet
+      tags:
+        - projets
+      produces:
+        - application/json
+      security:
+        - Bearer: []
+      parameters:
+        - name: projetId
+          description: id of the projet to Edit
+          in: path
+          required: true
+          type: string
+        - name: projet
+          description: projet object
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/newProject'
+      responses:
+        200:
+          description: projet
+          schema:
+            $ref: '#/definitions/newProject'
+    delete:
+      description: Use to request delete all projets
+      tags:
+       - projets
+      parameters:
+        - name: projetId
+          description: id of the projet to Edit
+          in: path
+          required: true
+          type: string
+      security:
+        - Bearer: []
+      responses:
+        200:
+         description: A successful response 
+  /product:
+    get:
+      tags:
+      - "products"
+      summary: "Get product"
+      description: "This can only be done by the logged in user."
+      operationId: "Get"
+      produces:
+      - "application/json"
+      security:
+        - Bearer: []
+      responses:
+        default:
+          description: "successful operation"
+    post:
+      description: add an specific product
+      tags:
+        - products
+      produces:
+        - application/json
+      security:
+        - Bearer: []
+      parameters:
+        - name: product
+          description: product object
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/product'
+      responses:
+        200:
+          description: product
+          schema:
+            $ref: '#/definitions/product'
+  /product/{productId}:
+    get:
+      description: Retrieve an specific product
+      tags:
+        - products
+      produces:
+        - application/json
+      security:
+        - Bearer: []
+      parameters:
+        - name: productId
+          description: id of the product to retrieve
+          in: path
+          required: true
+          type: string
+      responses:
+        200:
+          description: product
+          schema:
+            $ref: '#/definitions/product'
+    put:
+      description: Edit an specific Product
+      tags:
+        - products
+      produces:
+        - application/json
+      security:
+        - Bearer: []
+      parameters:
+        - name: productId
+          description: id of the product to Edit
+          in: path
+          required: true
+          type: string
+        - name: product
+          description: product object
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/product'
+      responses:
+        200:
+          description: product
+          schema:
+            $ref: '#/definitions/product'
+    delete:
+      description: Use to request delete all products
+      tags:
+       - products
+      parameters:
+        - name: productId
+          description: id of the product to Edit
+          in: path
+          required: true
+          type: string
+      security:
+        - Bearer: []
+      responses:
+        200:
+         description: A successful response 
+  /users:
+    get:
+      tags:
+      - "user"
+      summary: "Get users"
+      description: "This can only be done by the logged in user."
+      operationId: "Get"
+      produces:
+      - "application/json"
+      security:
+        - Bearer: []
+      responses:
+        default:
+          description: "successful operation"
+    post:
+      description: add an specific User
+      tags:
+        - user
+      produces:
+        - application/json
+      security:
+        - Bearer: []
+      parameters:
+        - name: user
+          description: user object
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+      responses:
+        200:
+          description: User
+          schema:
+            $ref: '#/definitions/User'
+  /users/{userId}:
+    get:
+      description: Retrieve an specific user
+      tags:
+        - user
+      produces:
+        - application/json
+      security:
+        - Bearer: []
+      parameters:
+        - name: userId
+          description: id of the product to retrieve User
+          in: path
+          required: true
+          type: string
+      responses:
+        200:
+          description: user
+          schema:
+            $ref: '#/definitions/User'
+    put:
+      description: Edit an specific User
+      tags:
+        - user
+      produces:
+        - application/json
+      security:
+        - Bearer: []
+      parameters:
+        - name: userId
+          description: id of the user to Edit
+          in: path
+          required: true
+          type: string
+        - name: user
+          description: user object
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+      responses:
+        200:
+          description: user update
+          schema:
+            $ref: '#/definitions/User'
+    delete:
+      description: Use to request delete all users
+      tags:
+       - user
+      parameters:
+        - name: userId
+          description: id of the user to Edit
+          in: path
+          required: true
+          type: string
+      security:
+        - Bearer: []
+      responses:
+        200:
+         description: A successful response 
+  /user/sendemail:
+    post:
+      tags:
+      - "Auth"
+      summary: "Send user email"
+      description: ""
+      operationId: "userEmail"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "email"
+        description: "Email"
+        required: true
+      responses:
+        default:
+          description: "Email Sent"
+  /auth/login:
+    post:
+      tags:
+      - "Auth"
+      summary: "Logs user into the system"
+      description: ""
+      operationId: "loginUser"
+      produces:
+      - "application/json"
+      parameters:
+        - name: authentication
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/Authentication"
+      responses:
+        "200":
+          description: "Success"
+          schema:
+            $ref: "#/definitions/Token"
+        "403":
+          description: "Access Denied"
+          schema:
+            $ref: "#/definitions/Error"
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: x-auth-token
+    in: header
+definitions:
+ Authentication:
+    type: object
+    properties:
+      email:
+        type: string
+        example: "Email"
+      password:
+        type: string
+        example: "password"
+ Resource:
+    type: object
+    properties:
+      resource:
+        type: string
+ Token:
+    type: object
+    properties:
+      token:
+        type: string
+ Error:
+    type: object
+    properties:
+      message:
+        type: string
+ User:
+    type: "object"
+    properties:
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+      email:
+        type: "string"
+      password:
+        type: "string"
+      phone:
+        type: "number"
+ product:
+    type: "object"
+    properties:
+      title:
+        type: "string"
+      imageUrl:
+        type: "string"
+      prix:
+        type: "number"
+      type:
+        type: "string"
+      brand:
+        type: "string"
+      category:
+        type: "string"
+      sale:
+        type: "boolean"
+      discount:
+        type: "number"
+      stock:
+        type: "number"
+      new:
+        type: "boolean"
+      userId:
+        type: "string"
+ boutique:
+    type: "object"
+    properties:
+      nomArticle:
+        type: "string"
+      imageUrl:
+        type: "string"
+      prix:
+        type: "number"
+      description:
+        type: "string"
+ offre:
+    type: "object"
+    properties:
+      prix:
+        type: "number"
+      type:
+        type: "string"
+      description:
+        type: "string"
+ entreprise:
+    type: "object"
+    properties:
+      label:
+        type: "string"
+      adresse:
+        type: "string"
+ newProject:
+    type: "object"
+    properties:
+      marker:
+        type: "string"
+      imageUrl:
+        type: "string"
+      userId:
+        type: "string"
