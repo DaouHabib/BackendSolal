@@ -13,4 +13,14 @@ router.route('/:projetId')
     .put(ProjectService.updateProject)
     .delete(ProjectService.deleteProject)
 
+router.route('/user/:userId')
+    .get(ProjectService.getProjectbyiduser)
+
+router.route('/marker/:projectId')
+    .get(ProjectService.getProjectMarkers)
+    .post(ProjectService.AddmarkerToProject)
+    
+router.route('/clearmarker/:projectId')
+    .get(ProjectService.clearMarker)  
+
     module.exports = router;

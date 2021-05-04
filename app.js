@@ -14,6 +14,10 @@ const offreRouter = require('./controllers/offre.controller');
 const productRouter = require('./controllers/produit.controller');
 const projetRouter = require('./controllers/newProject.controller');
 const boutiqueRouter = require('./controllers/boutique.controller');
+const markerRouter = require('./controllers/marker.controller');
+const actionRouter = require('./controllers/action.controller');
+
+
 
 const uploads = require('./controllers/uploads.controller');
 const swaggerUi = require("swagger-ui-express");
@@ -22,7 +26,9 @@ const swaggerDocument = YAML.load('./swagger.yaml');
 
 var cors = require('cors');
 var app = express();
-
+app.use('/media',
+  express.static( path.resolve( __dirname, './media' ) )
+);
 // Connection to DataBase
 mongoose.connect(dbConfig.url, { useNewUrlParser: true })
   .then(() => {
@@ -55,6 +61,9 @@ app.use('/offre', offreRouter);
 app.use('/product', productRouter);
 app.use('/projet', projetRouter);
 app.use('/uploads', uploads);
+app.use('/marker', markerRouter);
+app.use('/action', actionRouter);
+
 
 //Cors
 app.use(function (req, res, next) {
@@ -69,6 +78,7 @@ app.use(function (req, res, next) {
     // Set to true if you need the website to include cookies in the requests sent
     // to the API (e.g. in case you use sessions)
     res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader('Content-Type', 'application/octet-stream');
 
   next();
 });

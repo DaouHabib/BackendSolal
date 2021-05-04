@@ -7,6 +7,7 @@ const Grid = require('gridfs-stream');
 const router = require('express-promise-router')();
 const crypto = require('crypto');
 const path = require('path');
+var fs = require('file-system');
 
 const mongoose = require('mongoose');
 
@@ -92,6 +93,12 @@ router.get('/files/:filename', (req, res) => {
           err: 'No file exists'
         });
       }
+      var fileBuffer = Buffer.from(res.json(file))
+
+      fs.writeFileSync('./media/'+"Test2.patt",fileBuffer, function(err) {
+        console.log(err) 
+      })
+   
       // File exists
       return res.json(file);
     });

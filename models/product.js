@@ -40,6 +40,11 @@ const productSchema = new Schema({
         required: true
 
     },
+    quantity: {
+        type: Number,
+        required: true
+
+    },
     new: {
         type: Boolean,
     },

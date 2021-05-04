@@ -1,27 +1,26 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const projectSchema = new Schema({
+const markerSchema = new Schema({
 
   
-    markers: 
+    actions: 
         [{
             type: Schema.Types.ObjectId,
-            ref: "marker"
+            ref: "Action"
         }],
-        
-    name: {
-        type: String,
-    },
     imageUrl: {
         type: String,
     },
-    userId: {
+    markerUrl: {
+        type: String,
+    },
+    markerName: {
         type: String,
     },
 });
 
 
-const Project = mongoose.model('Project', projectSchema);
-module.exports.Project = Project;
+const Marker = mongoose.model('marker', markerSchema);
+module.exports.Marker = Marker;
 
