@@ -12,8 +12,10 @@ module.exports = {
         const token = req.header('x-auth-token');
         if (!token) res.status(401).send('access denied . No Token Provided.');
         try {
+
             const decodedPayload = jwt.verify(token, "jwtPrivateKey");
             req.user = decodedPayload;
+            console.log(req.body);
             Products = new Product(req.body);
             await Products.save();
             res.status(201).json((Products));

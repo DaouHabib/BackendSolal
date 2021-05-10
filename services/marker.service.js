@@ -96,13 +96,11 @@ module.exports = {
     },
 
     getMarkers: async (req, res, next) => {
+        var result=[];
         projet = await Project.findById(req.params.projetId).populate('markers')
-        projet.markers.forEach( async element => {
-            var result=[];
-            result.push(await Marker.findById(element._id).populate('actions'));
-        res.status(200).json(result);
-        });
-    
+  
+        res.status(200).json(projet.markers);
+
 },
 
 }
